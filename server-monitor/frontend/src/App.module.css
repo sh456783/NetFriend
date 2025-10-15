@@ -1,0 +1,188 @@
+/* frontend/src/App.module.css (전체 복사 후 붙여넣기) */
+
+.appContainer {
+  font-family: Arial, sans-serif;
+  padding: 20px;
+  /* fixed alert가 상단에 없으므로, padding-top은 원래대로 유지하거나 제거해도 무방 */
+  background-color: #f8f9fa;
+  min-height: 100vh;
+}
+
+/* 🚨 오른쪽 아래에 고정된(Fixed) 알림 메시지 스타일 */
+.bottomRightAlert {
+  position: fixed; 
+  bottom: 20px; /* 아래에서 20px 위치 */
+  right: 20px; /* 오른쪽에서 20px 위치 */
+  width: 350px; /* 알림 창 너비 지정 */
+  z-index: 1000; 
+  
+  /* 스타일 */
+  background-color: #f7e6a6; 
+  color: #8a6d3b;
+  padding: 15px 20px;
+  text-align: left;
+  font-weight: bold;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  border: 1px solid #f0ad4e;
+  border-radius: 8px; /* 모서리를 둥글게 처리 */
+  animation: fadeIn 0.5s ease-out; /* 애니메이션 추가 */
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+
+h1 {
+  color: #2c3e50;
+  border-bottom: 3px solid #3498db;
+  padding-bottom: 15px;
+  margin-bottom: 20px;
+}
+
+.updateTime {
+  font-size: 14px;
+  color: #7f8c8d;
+  margin-bottom: 30px;
+}
+
+.instanceTable {
+  width: 100%;
+  border-collapse: collapse;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  background-color: white;
+}
+
+.instanceTable th, .instanceTable td {
+  padding: 12px 15px;
+  text-align: left;
+  border-bottom: 1px solid #ddd;
+}
+
+.instanceTable th {
+  background-color: #3498db;
+  color: white;
+  font-weight: bold;
+}
+
+.instanceRow {
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.instanceRow:hover {
+  background-color: #f1f1f1;
+}
+
+/* 상태별 색상 */
+.running {
+  color: #27ae60;
+  font-weight: bold;
+}
+
+.stopped {
+  color: #c0392b;
+  font-weight: bold;
+}
+
+.checkStatus {
+  font-size: 18px;
+}
+
+/* 선택된 행 강조 */
+.selectedRow {
+  background-color: #e8f5ff;
+}
+
+/* 상세 정보 컨테이너 (로그 + 메트릭) */
+.detailCell {
+    padding: 0 !important; 
+}
+
+.detailContainer {
+  display: flex;
+  gap: 20px;
+  background-color: #e9ecef;
+  padding: 20px;
+  margin: 0;
+  width: 100%;
+  flex-wrap: wrap; /* 작은 화면에서 요소가 줄바꿈되도록 */
+}
+
+.logSection, .metricSection {
+  flex: 1;
+  min-width: 300px; 
+  background-color: white;
+  padding: 15px;
+  border-radius: 5px;
+  box-shadow: 0 2px 4px rgba(0,0,0,.05);
+}
+
+.logSection h3, .metricSection h3 {
+  margin-top: 0;
+  color: #34495e;
+  border-bottom: 1px solid #eee;
+  padding-bottom: 10px;
+  margin-bottom: 15px;
+}
+
+.metricError {
+  color: red;
+  font-weight: bold;
+  text-align: center;
+  padding: 20px;
+}
+
+/* 로그 표시 영역 */
+.logPre {
+  background-color: #232b2e;
+  color: #ecf0f1;
+  padding: 10px;
+  font-family: 'Consolas', 'Courier New', monospace;
+  text-align: left;
+  line-height: 1.4;
+  white-space: pre-wrap; 
+  word-wrap: break-word;
+  max-height: 280px; 
+  overflow-y: auto; 
+  margin: 0;
+  border-radius: 4px;
+}
+
+/* 제어 버튼 스타일 */
+.startButton, .stopButton {
+    padding: 8px 12px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: background-color 0.2s;
+}
+
+.startButton {
+    background-color: #2ecc71;
+    color: white;
+}
+.startButton:hover:not(:disabled) {
+    background-color: #27ae60;
+}
+.startButton:disabled {
+    background-color: #bdc3c7; 
+    cursor: not-allowed;
+}
+
+
+.stopButton {
+    background-color: #e74c3c; 
+    color: white;
+}
+.stopButton:hover:not(:disabled) {
+    background-color: #c0392b;
+}
