@@ -1,104 +1,267 @@
-/* frontend/src/App.module.css (전체 복사 후 붙여넣기) */
-
+/* -----------------------------------------------------------------
+   1. 전체 레이아웃 및 기본 설정
+----------------------------------------------------------------- */
 .appContainer {
-  font-family: Arial, sans-serif;
-  padding: 20px;
-  /* fixed alert가 상단에 없으므로, padding-top은 원래대로 유지하거나 제거해도 무방 */
-  background-color: #f8f9fa;
-  min-height: 100vh;
+    font-family: Arial, sans-serif;
+    padding: 20px;
+    background-color: #f8f9fa;
+    min-height: 100vh;
 }
 
-/* 🚨 오른쪽 아래에 고정된(Fixed) 알림 메시지 스타일 */
-.bottomRightAlert {
-  position: fixed; 
-  bottom: 20px; /* 아래에서 20px 위치 */
-  right: 20px; /* 오른쪽에서 20px 위치 */
-  width: 350px; /* 알림 창 너비 지정 */
-  z-index: 1000; 
-  
-  /* 스타일 */
-  background-color: #f7e6a6; 
-  color: #8a6d3b;
-  padding: 15px 20px;
-  text-align: left;
-  font-weight: bold;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
-  border: 1px solid #f0ad4e;
-  border-radius: 8px; /* 모서리를 둥글게 처리 */
-  animation: fadeIn 0.5s ease-out; /* 애니메이션 추가 */
+/* 헤더와 로그아웃 버튼을 위한 flex 컨테이너 */
+.headerBar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    padding-bottom: 15px;
+    border-bottom: 3px solid #3498db;
 }
-
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-    transform: translateY(20px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
 
 h1 {
-  color: #2c3e50;
-  border-bottom: 3px solid #3498db;
-  padding-bottom: 15px;
-  margin-bottom: 20px;
+    color: #2c3e50;
+    margin: 0; 
+}
+
+/* 🚨 IDS 패널과 테이블을 가로로 배치하기 위한 그리드 */
+.topContentGrid {
+    display: grid;
+    grid-template-columns: 1fr 3fr; /* 알림 1/4, 테이블 3/4 */
+    gap: 20px;
+    margin-bottom: 30px;
+}
+
+/* 🚨 반응형: 작은 화면에서는 세로로 쌓이도록 */
+@media (max-width: 1024px) {
+    .topContentGrid {
+        grid-template-columns: 1fr;
+    }
 }
 
 .updateTime {
-  font-size: 14px;
-  color: #7f8c8d;
-  margin-bottom: 30px;
+    font-size: 14px;
+    color: #7f8c8d;
+    margin-bottom: 10px; 
+    text-align: right; 
 }
 
+.instanceTableContainer {
+    /* 테이블 컨테이너 */
+}
+
+/* -----------------------------------------------------------------
+   2. 로그인 UI 스타일 (화면 중앙 정렬)
+----------------------------------------------------------------- */
+.loginContainer {
+    display: flex;
+    justify-content: center; 
+    align-items: center; 
+    min-height: 100vh;
+    background-color: #e9ecef; 
+}
+
+.loginForm {
+    background: #ffffff;
+    padding: 40px;
+    border-radius: 12px;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+    width: 100%; 
+    max-width: 400px; 
+    text-align: center;
+    animation: fadeInScale 0.5s ease-out;
+}
+
+.loginForm h2 {
+    color: #3498db;
+    margin-bottom: 30px;
+    font-size: 1.5em;
+    border-bottom: none;
+}
+
+.loginForm input {
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box; 
+}
+
+.loginButton {
+    width: 100%;
+    padding: 12px;
+    background-color: #3498db;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1.1em;
+    font-weight: bold;
+    transition: background-color 0.2s;
+}
+
+.loginButton:hover {
+    background-color: #2980b9;
+}
+
+.loginError {
+    color: #e74c3c;
+    background-color: #f8d7da;
+    border: 1px solid #f5c6cb;
+    padding: 10px;
+    margin-bottom: 15px;
+    border-radius: 5px;
+    font-size: 0.9em;
+}
+
+/* -----------------------------------------------------------------
+   3. IDS 알림 패널 스타일
+----------------------------------------------------------------- */
+.idsPanel {
+    background-color: #ffffff;
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    height: 100%; 
+    min-height: 300px; 
+    display: flex;
+    flex-direction: column;
+}
+
+.idsPanel h3 {
+    margin-top: 0;
+    color: #34495e;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 10px;
+    margin-bottom: 10px;
+    font-size: 1.1em;
+}
+
+.idsPanelPlaceholder {
+    text-align: center;
+    color: #7f8c8d;
+    padding: 20px;
+    flex-grow: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.alertsList {
+    overflow-y: auto;
+    flex-grow: 1;
+    max-height: 500px; 
+}
+
+.alertItem {
+    padding: 10px;
+    margin-bottom: 8px;
+    border-radius: 6px;
+    border-left: 5px solid;
+    font-size: 0.9em;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+}
+
+.alertHeader {
+    display: flex;
+    justify-content: space-between;
+    font-weight: bold;
+    margin-bottom: 4px;
+}
+
+.alertTime {
+    color: #7f8c8d;
+    font-weight: normal;
+}
+
+.alertSignature {
+    font-weight: bold;
+    margin-bottom: 4px;
+}
+
+.alertDetail {
+    color: #7f8c8d;
+    font-size: 0.85em;
+    margin-top: 0;
+}
+
+/* 심각도별 색상 구분 */
+/* severity 1 (High/Critical) */
+.severityHigh {
+    background-color: #fce4e4; 
+    border-color: #e74c3c; /* Red */
+}
+.severityHigh .alertSeverity {
+    color: #e74c3c;
+}
+
+/* severity 2 (Medium) */
+.severityMedium {
+    background-color: #fff9e4; 
+    border-color: #f39c12; /* Orange */
+}
+.severityMedium .alertSeverity {
+    color: #f39c12;
+}
+
+/* severity 3 (Low) */
+.severityLow {
+    background-color: #e6f7e9; 
+    border-color: #2ecc71; /* Green */
+}
+.severityLow .alertSeverity {
+    color: #2ecc71;
+}
+
+
+/* -----------------------------------------------------------------
+   4. 테이블 및 상태 스타일 (나머지 스타일은 그대로 유지)
+----------------------------------------------------------------- */
 .instanceTable {
-  width: 100%;
-  border-collapse: collapse;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  background-color: white;
+    width: 100%;
+    border-collapse: collapse;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    background-color: white;
 }
 
 .instanceTable th, .instanceTable td {
-  padding: 12px 15px;
-  text-align: left;
-  border-bottom: 1px solid #ddd;
+    padding: 12px 15px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
 }
 
 .instanceTable th {
-  background-color: #3498db;
-  color: white;
-  font-weight: bold;
+    background-color: #3498db;
+    color: white;
+    font-weight: bold;
 }
 
 .instanceRow {
-  cursor: pointer;
-  transition: background-color 0.2s;
+    cursor: pointer;
+    transition: background-color 0.2s;
 }
 
 .instanceRow:hover {
-  background-color: #f1f1f1;
+    background-color: #f1f1f1;
 }
 
-/* 상태별 색상 */
 .running {
-  color: #27ae60;
-  font-weight: bold;
+    color: #27ae60;
+    font-weight: bold;
 }
 
 .stopped {
-  color: #c0392b;
-  font-weight: bold;
+    color: #c0392b;
+    font-weight: bold;
 }
 
 .checkStatus {
-  font-size: 18px;
+    font-size: 18px;
+    text-align: center;
 }
 
-/* 선택된 행 강조 */
 .selectedRow {
-  background-color: #e8f5ff;
+    background-color: #e8f5ff;
 }
 
 /* 상세 정보 컨테이너 (로그 + 메트릭) */
@@ -107,53 +270,52 @@ h1 {
 }
 
 .detailContainer {
-  display: flex;
-  gap: 20px;
-  background-color: #e9ecef;
-  padding: 20px;
-  margin: 0;
-  width: 100%;
-  flex-wrap: wrap; /* 작은 화면에서 요소가 줄바꿈되도록 */
+    display: flex;
+    gap: 20px;
+    background-color: #e9ecef;
+    padding: 20px;
+    margin: 0;
+    width: 100%;
+    flex-wrap: wrap; 
 }
 
 .logSection, .metricSection {
-  flex: 1;
-  min-width: 300px; 
-  background-color: white;
-  padding: 15px;
-  border-radius: 5px;
-  box-shadow: 0 2px 4px rgba(0,0,0,.05);
+    flex: 1;
+    min-width: 300px; 
+    background-color: white;
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,.05);
 }
 
 .logSection h3, .metricSection h3 {
-  margin-top: 0;
-  color: #34495e;
-  border-bottom: 1px solid #eee;
-  padding-bottom: 10px;
-  margin-bottom: 15px;
+    margin-top: 0;
+    color: #34495e;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 10px;
+    margin-bottom: 15px;
 }
 
 .metricError {
-  color: red;
-  font-weight: bold;
-  text-align: center;
-  padding: 20px;
+    color: red;
+    font-weight: bold;
+    text-align: center;
+    padding: 20px;
 }
 
-/* 로그 표시 영역 */
 .logPre {
-  background-color: #232b2e;
-  color: #ecf0f1;
-  padding: 10px;
-  font-family: 'Consolas', 'Courier New', monospace;
-  text-align: left;
-  line-height: 1.4;
-  white-space: pre-wrap; 
-  word-wrap: break-word;
-  max-height: 280px; 
-  overflow-y: auto; 
-  margin: 0;
-  border-radius: 4px;
+    background-color: #232b2e;
+    color: #ecf0f1;
+    padding: 10px;
+    font-family: 'Consolas', 'Courier New', monospace;
+    text-align: left;
+    line-height: 1.4;
+    white-space: pre-wrap; 
+    word-wrap: break-word;
+    max-height: 280px; 
+    overflow-y: auto; 
+    margin: 0;
+    border-radius: 4px;
 }
 
 /* 제어 버튼 스타일 */
@@ -178,11 +340,67 @@ h1 {
     cursor: not-allowed;
 }
 
-
 .stopButton {
     background-color: #e74c3c; 
     color: white;
 }
 .stopButton:hover:not(:disabled) {
     background-color: #c0392b;
+}
+
+.logoutButton {
+    padding: 8px 15px;
+    background-color: #e74c3c;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: background-color 0.2s;
+}
+
+.logoutButton:hover {
+    background-color: #c0392b;
+}
+
+
+/* 알림 및 애니메이션 */
+.bottomRightAlert {
+    position: fixed; 
+    bottom: 20px; 
+    right: 20px; 
+    width: 350px; 
+    z-index: 1000; 
+    
+    background-color: #f7e6a6; 
+    color: #8a6d3b;
+    padding: 15px 20px;
+    text-align: left;
+    font-weight: bold;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    border: 1px solid #f0ad4e;
+    border-radius: 8px; 
+    animation: fadeIn 0.5s ease-out; 
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeInScale {
+    from {
+        opacity: 0;
+        transform: scale(0.95);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
 }
