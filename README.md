@@ -39,10 +39,11 @@ IDS 탐지 → 처리 → 대응 → 시각화까지 하나의 파이프라인�
 ---
 
 ### 3) 동적 대응 시스템
-- Suricata 이벤트 기반 자동 반응
-- ipset 기반 고속 IP 차단
+- Suricata 이벤트 기반 자동 대응
+- 위험도가 높은 탐지 이벤트는 IPS 정책으로 즉시 차단
+- ipset 기반 고속 IP 차단 처리
 - 로그인 실패 5회 시 자동 차단(Fail2Ban 개선 버전)
-- 대시보드에서 차단·해제 처리
+- 차단·해제 전 과정을 대시보드에서 제어
 
 ---
 
@@ -61,54 +62,56 @@ FastAPI + React 기반의 모니터링 및 제어 인터페이스.
 
 ## 시스템 구조도
 
-javascript
-코드 복사
-                       사용자 브라우저
-                               │
-                               ▼
-                    ┌───────────────────────┐
-                    │   React 웹 대시보드   │
-                    └───────────────────────┘
-                               │
-                               ▼
-                    ┌───────────────────────┐
-                    │   Nginx Reverse Proxy │
-                    └───────────────────────┘
-                               │
-                               ▼
-                    ┌───────────────────────┐
-                    │     FastAPI Backend   │
-                    │  ├ Suricata IDS 연동  │
-                    │  ├ AWS EC2 API 연동   │
-                    │  └ ipset 자동 차단    │
-                    └───────────────────────┘
-================================================================================
-VPN Tunnel (StrongSwan IKEv2 - Encrypted)
-vbnet
-코드 복사
-                    ┌───────────────────────┐
-                    │  On-Premise 물리 서버 │
-                    │  └ CloudWatch Agent   │
-                    └───────────────────────┘
+                             사용자 브라우저
+                                   │
+                                   ▼
+                        ┌───────────────────────┐
+                        │   React 웹 대시보드   │
+                        └───────────────────────┘
+                                   │
+                                   ▼
+                        ┌───────────────────────┐
+                        │   Nginx Reverse Proxy │
+                        └───────────────────────┘
+                                   │
+                                   ▼
+                        ┌───────────────────────┐
+                        │     FastAPI Backend   │
+                        │  ├ Suricata IDS 연동  │
+                        │  ├ AWS EC2 API 연동   │
+                        │  └ ipset 자동 차단    │
+                        └───────────────────────┘
 
-                    ┌───────────────────────┐
-                    │    AWS 보안 서버(EC2) │
-                    │  ├ IDS / Dashboard    │
-                    │  ├ Auto Scaling Group │
-                    │  └ Load Balancer      │
-                    └───────────────────────┘
+================================================================================
+                 VPN Tunnel (StrongSwan IKEv2 - Encrypted)
+================================================================================
+
+                        ┌──────────────────────────────┐
+                        │     On-Premise 물리 서버     │
+                        │  ├ 내부 서비스 (Local Site)  │
+                        │  └ CloudWatch Agent          │
+                        └──────────────────────────────┘
+
+                           ┌───────────────────────┐
+                           │    AWS 보안 서버(EC2) │
+                           │  ├ IDS / Dashboard    │
+                           │  ├ Auto Scaling Group │
+                           │  └ Load Balancer      │
+                           └───────────────────────┘
 
 
 ---
 
 ## Repository Structure
 
+```
 NetFriend/
-├── EC2_IDS/ # Suricata IDS 구성
-├── hybrid_server/ # VPN + 물리 서버 연동
-├── internal_security/ # Fail2Ban(ipset) 기반 보안 기능
-├── server-monitor/ # FastAPI + React 대시보드
-└── README.md # Main README
+├── EC2_IDS/            # EC2 서버 구축 및 Suricata IDS 구성
+├── hybrid_server/      # VPN + 물리 서버 연동 및 오토스케일링 & 로드벨런서
+├── internal_security/  # Fail2Ban(ipset) + IPS 기반 보안 기능
+├── server-monitor/     # FastAPI + React 대시보드
+└── README.md           # Main README
+```
 
 ---
 
