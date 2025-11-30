@@ -108,8 +108,7 @@ FastAPI + React 기반의 모니터링 및 제어 인터페이스.
 
 
 
-## Repository Structure
-
+▶ 디렉터리 구조 (Repository Structure)
 NetFriend/
 ├── EC2_IDS/ # EC2 서버 구축 및 Suricata IDS 구성
 ├── hybrid_server/ # VPN + 물리 서버 연동 및 오토스케일링 & 로드벨런서
@@ -118,7 +117,7 @@ NetFriend/
 └── README.md # Main README
 
 ---
-## Documentation
+▶ 문서 (Documentation)
 
 IDS 설치, VPN 구성, CloudWatch 설정, Auto Scaling 환경 등  
 전체 구성 과정은 프로젝트 문서(PDF, PPT)에 정리되어 있습니다.
