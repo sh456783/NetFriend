@@ -11,11 +11,9 @@ Hybrid-Based Real-Time Intrusion Detection & Dynamic Response System
 
 ### 프로젝트 개요
 NetFriend는 내부 물리 서버(On-Premise)와 AWS EC2 환경을 함께 사용하는  
-하이브리드 보안·모니터링 시스템입니다. Suricata 기반 침입 탐지,  
-자동 IP 차단, 서버 상태 모니터링, Auto Scaling 기반 확장 기능을 제공합니다.
+하이브리드 보안·모니터링 시스템입니다. Suricata 기반 침입 탐지, 자동 IP 차단, 서버 상태 모니터링, Auto Scaling 기반 확장 기능을 제공합니다.
 
-FastAPI, React Dashboard, StrongSwan VPN, CloudWatch Agent 등을 활용하여  
-IDS 탐지 → 처리 → 대응 → 시각화까지 하나의 파이프라인으로 구성하였습니다.
+FastAPI, React Dashboard, StrongSwan VPN, CloudWatch Agent 등을 활용하여 IDS 탐지 → 처리 → 대응 → 시각화까지 하나의 파이프라인으로 구성하였습니다.
 
 ---
 
