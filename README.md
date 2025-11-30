@@ -1,79 +1,98 @@
-# 🔰 NetFriend
-> **하이브리드 기반 실시간 침입 탐지 및 동적 대응 시스템**  
-> Hybrid-based Real-Time Intrusion Detection & Dynamic Response System  
+#🔰 NetFriend  
+하이브리드 기반 실시간 침입 탐지 및 동적 대응 시스템  
+Hybrid-based Real-Time Intrusion Detection & Dynamic Response System  
 
----
-
-![GitHub last commit](https://img.shields.io/github/last-commit/Parkhs88/NetFriend?color=blue)
-![GitHub repo size](https://img.shields.io/github/repo-size/Parkhs88/NetFriend?color=green)
-![GitHub contributors](https://img.shields.io/github/contributors/Parkhs88/NetFriend)
-![License](https://img.shields.io/badge/license-MIT-lightgrey)
+[![last commit](https://img.shields.io/github/last-commit/sh456783/NetFriend)](https://github.com/sh456783/NetFriend/commits)
+![repo size](https://img.shields.io/github/repo-size/sh456783/NetFriend)
+![contributors](https://img.shields.io/github/contributors/sh456783/NetFriend)
+[![license MIT](https://img.shields.io/github/license/sh456783/NetFriend)](LICENSE)
 
 ---
 
 ## 프로젝트 개요
 
-**NetFriend**는 내부 물리 서버(On-Premise)와 AWS EC2를 결합하여  
-**실시간 침입 탐지(IDS)**, **부하 분산을 위한 하이브리드 서버 구조**,  
-그리고 **자동 방화벽 대응(동적 대응)** 을 통합한 보안 시스템입니다.  
+**NetFriend**는 내부 물리 서버(On-Premise)와 AWS EC2 보안 서버를 연동하여  
+**실시간 침입 탐지(IDS)**, **동적 IP 차단**, **서버 상태 모니터링**,  
+**Auto Scaling 기반 서비스 복제**까지 제공하는 하이브리드 보안 플랫폼입니다.
 
-> 핵심 개념:  
-> 내부 보안 시스템은 침입 탐지 결과에 따라  
-> **자동으로 공격 IP를 차단하고, 보안 그룹(Security Group)을 실시간으로 조정**합니다.  
-> 이러한 동적 대응을 통해 내부 네트워크는 지속적으로 안전한 상태를 유지합니다.
+Suricata IDS, FastAPI, React Dashboard, StrongSwan VPN,  
+AWS CloudWatch Agent 등 다양한 보안·운영 컴포넌트를 통합해  
+**감지 → 분석 → 대응 → 시각화**가 하나의 흐름으로 작동하도록 설계되었습니다.
+
 ---
 
 ## 주요 기능
 
-### 1. 침입 탐지 (Intrusion Detection)
-- 네트워크 트래픽을 실시간으로 감시하고, 공격으로 의심되는 패킷을 탐지  
-- 탐지된 이벤트는 로그(`eve.json`)로 저장되고 웹 대시보드로 전송  
-- SSH, HTTP, ICMP 등 주요 포트를 중심으로 트래픽 분석  
-
-### 2. 하이브리드 서버 구조 (Hybrid Server Architecture)
-- 내부 물리 서버와 AWS EC2 서버가 **연결된 이중 구조**  
-- 물리 서버가 기본적으로 트래픽을 처리하며,  
-  **부하가 발생하면 EC2 서버가 자동으로 지원(Load Balancing)**  
-- EC2 서버는 동일한 IDS 환경을 유지하며  
-  물리 서버의 안정성과 가용성을 향상시킵니다.  
-
-### 3. 동적 대응 시스템 (Dynamic Response)
-- 탐지된 공격 이벤트에 따라 자동으로 **보안 그룹(Security Group)** 규칙을 수정  
-- 공격 IP를 즉시 차단하고, 관리자에게 **알림(Slack, Discord, Email, Dashboard)** 발송  
-- AWS IAM Role과 Boto3 스크립트를 활용한 **자동화 방화벽 시스템 구현**  
+### **1) 침입 탐지 (Intrusion Detection: Suricata)**
+- Suricata 기반 실시간 패킷 분석
+- eve.json/fast.log 기반 공격 탐지 이벤트 생성
+- SSH / HTTP / ICMP 등 주요 포트 모니터링
+- Custom Rule 기반 사용자 정의 탐지 가능
 
 ---
 
-## 웹 대시보드 (Server-Monitor)
-- **FastAPI + React.js** 기반의 실시간 통합 대시보드  
-- Suricata 탐지 로그(`eve.json`) + AWS CloudWatch 메트릭 연동  
-- 주요 기능:
-  - CPU / Memory / Network 사용률 실시간 모니터링  
-  - 공격 탐지 로그를 심각도별로 시각화  
-  - 알림 및 차단 현황 표시  
+### **2) 하이브리드 서버 구조 (Hybrid Server Architecture)**
+- On-Premise 서버 ↔ AWS 간 Site-to-Site VPN 연결 (StrongSwan IKEv2)
+- 물리 서버 CPU 메트릭을 CloudWatch로 전송
+- AWS EC2에서 물리 DB에 직접 접근 가능한 구조
+- 내부 서비스 + 클라우드 서비스 통합 운영
+
+---
+
+### **3) 동적 대응 시스템 (Dynamic Response)**
+- Suricata 탐지 이벤트 기반 자동 대응
+- ipset 기반 고속 IP 차단 시스템
+- 로그인 실패 5회 → 자동 차단 (Fail2Ban 개선 버전)
+- 모든 차단·해제 기능을 웹 대시보드에서 관리
+
+---
+
+### **4) 웹 대시보드 (Server-Monitor)**
+**FastAPI + React + Nginx 기반 실시간 모니터링 & 제어 시스템**
+
+- EC2 인스턴스 상태 조회 및 Start/Stop 제어
+- CloudWatch CPU 그래프(물리 서버 + EC2 모두 지원)
+- IDS 이벤트 로그 실시간 표시
+- EC2 시스템 콘솔 로그(Base64 디코딩) 조회 기능
+- 수동/자동 IP 차단 목록 관리
+- Authentication 기반 접근 제어
 
 ---
 
 ## 시스템 구조도
 
-```plaintext
-                    사용자 트래픽
-                          │
-                          ▼
-        ┌────────────────────────────┐
-        │       내부 서버 (On-Premise) │
-        │  ├─ 침입 탐지 모듈 (IDS)      │
-        │  └─ 백엔드 서버 (API)         │
-        └────────────────────────────┘
-                          │
-                부하 발생 시 (Load Threshold)
-                          │
-                          ▼
-        ┌────────────────────────────┐
-        │         AWS EC2 서버        │
-        │  ├─ 내부 서버의 부하 분산 지원 │
-        │  └─ 실시간 모니터링 및 대응    │
-        └────────────────────────────┘
-                          │
-                          ▼
-               웹 대시보드 (상태 및 탐지 시각화)
+사용자 브라우저
+│
+▼
+웹 대시보드 (React)
+│
+Nginx Reverse Proxy
+│
+FastAPI Backend
+├── Suricata IDS 로그 파싱
+├── AWS EC2 / CloudWatch API 연동
+└── ipset 기반 자동 차단 시스템
+
+──────────────────────────────────
+
+내부 물리 서버 (On-Premise)
+└── StrongSwan VPN(IKEv2) 연결
+
+AWS 보안 서버 (EC2)
+├── IDS / Dashboard
+├── Auto Scaling 그룹
+└── Application Load Balancer
+
+## Repository Structure
+NetFriend/
+├── EC2_IDS/ # Suricata IDS 구성
+├── hybrid_server/ # VPN + 물리서버 연동 구성
+├── internal_security/ # Fail2Ban(ipset) 기반 + IPS 보안 시스템
+├── server-monitor/ # FastAPI + React 대시보드
+└── README.md # 메인 문서
+
+## 📎 Documentation
+
+프로젝트 전체 과정(IDS 설치, VPN 구성, CloudWatch Agent, ASG/LB 등)은  
+첨부된 문서(PDF, PPT)에 정리되어 있습니다.
+
