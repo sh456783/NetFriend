@@ -62,59 +62,64 @@ FastAPI + React 기반의 모니터링 및 제어 인터페이스.
 ## 시스템 구조도
 
 ```text
-                               사용자 브라우저
-                                       │
-                                       ▼
-                        ┌──────────────────────────┐
-                        │      React 웹 대시보드    │
-                        └──────────────────────────┘
-                                       │
-                                       ▼
-                        ┌──────────────────────────┐
-                        │    Nginx Reverse Proxy   │
-                        └──────────────────────────┘
-                                       │
-                                       ▼
-                        ┌──────────────────────────┐
-                        │       FastAPI Backend    │
-                        │    ├ Suricata IDS 연동   │
-                        │    ├ AWS EC2 API 연동    │
-                        │    └ ipset 자동 차단     │
-                        └──────────────────────────┘
+                                        사용자 브라우저
+                                             │
+                                             ▼
+
+                               ┌───────────────────────────────┐
+                               │        React 웹 대시보드       │
+                               └───────────────────────────────┘
+                                             │
+                                             ▼
+
+                               ┌───────────────────────────────┐
+                               │       Nginx Reverse Proxy      │
+                               └───────────────────────────────┘
+                                             │
+                                             ▼
+
+                               ┌───────────────────────────────┐
+                               │         FastAPI Backend        │
+                               │     ├ Suricata IDS 연동        │
+                               │     ├ AWS EC2 API 연동         │
+                               │     └ ipset 자동 차단          │
+                               └───────────────────────────────┘
 
 
 ================================================================================
-                VPN Tunnel (StrongSwan IKEv2 - Encrypted)
+                       VPN Tunnel (StrongSwan IKEv2 - Encrypted)
 ================================================================================
 
-                        ┌──────────────────────────┐
-                        │    On-Premise 물리 서버    │
-                        │  ├ 내부 서비스 (Local Site)│
-                        │  └ CloudWatch Agent       │
-                        └──────────────────────────┘
 
+                               ┌───────────────────────────────┐
+                               │      On-Premise 물리 서버       │
+                               │   ├ 내부 서비스 (Local Site)    │
+                               │   └ CloudWatch Agent           │
+                               └───────────────────────────────┘
+                                             │
+                                             ▼
 
-                        ┌──────────────────────────┐
-                        │      AWS 보안 서버 (EC2)  │
-                        │   ├ IDS / Dashboard       │
-                        │   ├ Auto Scaling Group    │
-                        │   └ Load Balancer         │
-                        └──────────────────────────┘
+                               ┌───────────────────────────────┐
+                               │        AWS 보안 서버 (EC2)     │
+                               │     ├ IDS / Dashboard          │
+                               │     ├ Auto Scaling Group       │
+                               │     └ Load Balancer            │
+                               └───────────────────────────────┘
+
 
 
 ## Repository Structure
 
-```
+## Repository Structure
+
 NetFriend/
-├── EC2_IDS/            # EC2 서버 구축 및 Suricata IDS 구성
-├── hybrid_server/      # VPN + 물리 서버 연동 및 오토스케일링 & 로드벨런서
-├── internal_security/  # Fail2Ban(ipset) + IPS 기반 보안 기능
-├── server-monitor/     # FastAPI + React 대시보드
-└── README.md           # Main README
-```
+├── EC2_IDS/ # EC2 서버 구축 및 Suricata IDS 구성
+├── hybrid_server/ # VPN + 물리 서버 연동 및 오토스케일링 & 로드벨런서
+├── internal_security/ # Fail2Ban(ipset) + IPS 기반 보안 기능
+├── server-monitor/ # FastAPI + React 대시보드
+└── README.md # Main README
 
 ---
-
 ## Documentation
 
 IDS 설치, VPN 구성, CloudWatch 설정, Auto Scaling 환경 등  
