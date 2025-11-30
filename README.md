@@ -12,11 +12,11 @@ Hybrid-Based Real-Time Intrusion Detection & Dynamic Response System
 ## 프로젝트 개요
 
 NetFriend는 내부 물리 서버(On-Premise)와 AWS EC2 환경을 함께 사용하는  
-하이브리드 보안·모니터링 시스템이다. Suricata 기반 침입 탐지,  
-자동 IP 차단, 서버 상태 모니터링, Auto Scaling 기반 확장 구조 등을 지원한다.
+하이브리드 보안·모니터링 시스템입니다. Suricata 기반 침입 탐지,  
+자동 IP 차단, 서버 상태 모니터링, Auto Scaling 기반 확장 기능을 제공합니다.
 
-FastAPI, React Dashboard, StrongSwan VPN, CloudWatch Agent 등을 사용해  
-IDS 탐지 → 처리 → 대응 → 시각화까지 단일 파이프라인으로 구성되어 있다.
+FastAPI, React Dashboard, StrongSwan VPN, CloudWatch Agent 등을 활용하여  
+IDS 탐지 → 처리 → 대응 → 시각화까지 하나의 파이프라인으로 구성하였습니다.
 
 ---
 
@@ -61,31 +61,43 @@ FastAPI + React 기반의 모니터링 및 제어 인터페이스.
 
 ## 시스템 구조도
 
-사용자 브라우저
-│
-▼
-[ React 웹 대시보드 ]
-│
-▼
-[Nginx Reverse Proxy]
-│
-▼
-[ FastAPI Backend ]
-├── Suricata IDS 로그 처리
-├── AWS EC2 / CloudWatch API 연동
-└── ipset 기반 자동 차단 시스템
+javascript
+코드 복사
+                       사용자 브라우저
+                               │
+                               ▼
+                    ┌───────────────────────┐
+                    │   React 웹 대시보드   │
+                    └───────────────────────┘
+                               │
+                               ▼
+                    ┌───────────────────────┐
+                    │   Nginx Reverse Proxy │
+                    └───────────────────────┘
+                               │
+                               ▼
+                    ┌───────────────────────┐
+                    │     FastAPI Backend   │
+                    │  ├ Suricata IDS 연동  │
+                    │  ├ AWS EC2 API 연동   │
+                    │  └ ipset 자동 차단    │
+                    └───────────────────────┘
+================================================================================
+VPN Tunnel (StrongSwan IKEv2 - Encrypted)
+vbnet
+코드 복사
+                    ┌───────────────────────┐
+                    │  On-Premise 물리 서버 │
+                    │  └ CloudWatch Agent   │
+                    └───────────────────────┘
 
-───────────────────────────────────────────────
-VPN: StrongSwan IKEv2 (Encrypted)
-───────────────────────────────────────────────
+                    ┌───────────────────────┐
+                    │    AWS 보안 서버(EC2) │
+                    │  ├ IDS / Dashboard    │
+                    │  ├ Auto Scaling Group │
+                    │  └ Load Balancer      │
+                    └───────────────────────┘
 
-[ On-Premise 물리 서버 ]
-└── CloudWatch Agent (CPU 지표 전송)
-
-[ AWS 보안 서버 (EC2) ]
-├── IDS / Dashboard
-├── Auto Scaling Group
-└── Application Load Balancer
 
 ---
 
@@ -103,4 +115,4 @@ NetFriend/
 ## Documentation
 
 IDS 설치, VPN 구성, CloudWatch 설정, Auto Scaling 환경 등  
-전체 구성 과정은 프로젝트 문서(PDF, PPT)에 정리되어 있다.
+전체 구성 과정은 프로젝트 문서(PDF, PPT)에 정리되어 있습니다.
