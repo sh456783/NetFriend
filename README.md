@@ -21,7 +21,7 @@ IDS 탐지 → 처리 → 대응 → 시각화까지 하나의 파이프라인�
 
 ## 주요 기능
 
-### ▶ 침입 탐지 (Suricata)
+### ► 침입 탐지 (Suricata)
 - 패킷 기반 실시간 분석
 - eve.json / fast.log 이벤트 파싱
 - SSH / HTTP / ICMP 등 주요 프로토콜 감시
@@ -29,7 +29,7 @@ IDS 탐지 → 처리 → 대응 → 시각화까지 하나의 파이프라인�
 
 ---
 
-### ▶ 하이브리드 서버 구조
+### ► 하이브리드 서버 구조
 - On-Premise ↔ AWS 간 Site-to-Site VPN (StrongSwan IKEv2)
 - 물리 서버 CPU 지표를 CloudWatch로 전송
 - AWS EC2에서 물리 DB 직접 접근 가능
@@ -37,7 +37,7 @@ IDS 탐지 → 처리 → 대응 → 시각화까지 하나의 파이프라인�
 
 ---
 
-### ▶ 동적 대응 시스템
+### ► 동적 대응 시스템
 - Suricata 이벤트 기반 자동 대응
 - 위험도가 높은 탐지 이벤트는 IPS 정책으로 즉시 차단
 - ipset 기반 고속 IP 차단 처리
@@ -46,7 +46,7 @@ IDS 탐지 → 처리 → 대응 → 시각화까지 하나의 파이프라인�
 
 ---
 
-### ▶ 웹 대시보드 (Server-Monitor)
+### ► 웹 대시보드 (Server-Monitor)
 FastAPI + React 기반의 모니터링 및 제어 인터페이스.
 
 제공 기능:
