@@ -2,7 +2,7 @@
 On-Premise × Cloud Unified Monitoring & Secure VPN Setup
 
 이 폴더는 **물리 서버(VM)**와 **AWS EC2 인스턴스**를 하나의 하이브리드 환경으로 통합하여  
-실시간 CPU/메모리 모니터링, VPN 기반의 안정적인 통신, 보안 설정을 수행한 전체 과정을 정리한 공간입니다.
+실시간 CPU/메모리 모니터링, VPN 기반의 안정적인 통신, 보안 설정을 수행한 전체 과정을 정리한 폴더더입니다.
 
 ## Overview
 Hybrid Server는 다음 3가지 핵심 기능을 중심으로 구성됩니다:
@@ -58,5 +58,5 @@ CloudWatch Agent를 통해 **온프레미스 메트릭이 클라우드로 전송
 
 ## 📝 참고
 CloudWatch Agent 설정 파일(JSON)과  
-credentials 저장 위치는 프로젝트에 맞게 수정하여 사용하십시오.
+credentials 저장 위치는 프로젝트에 맞게 수정하여 사용하세요.
 
