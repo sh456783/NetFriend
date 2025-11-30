@@ -1,7 +1,7 @@
 # Hybrid Server  
 On-Premise × AWS Cloud Integration
 
-이 폴더는 물리 서버(VM)와 AWS EC2를 연동해 하이브리드 환경을 구성한 과정들을 정리한 자료 모음입니다.
+이 폴더는 물리 서버(VM)와 AWS EC2를 연동해 하이브리드 환경을 구성한 과정들을 정리한 폴더입니다.
 
 ## 구성 내용
 
