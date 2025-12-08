@@ -1,0 +1,65 @@
+import boto3
+import json
+
+# --- [설정값] ---
+# 네가 만든 오토스케일링 그룹 이름 (이거랑 다르면 무시함!)
+TARGET_ASG_NAME = "School-Capstone-ASG"  
+
+ALB_LISTENER_ARN = "arn:aws:elasticloadbalancing:..." 
+TG_AWS_ARN = "arn:aws:elasticloadbalancing:..."      
+TG_PHYSICAL_ARN = "arn:aws:elasticloadbalancing:..." 
+# ----------------
+
+asg_client = boto3.client('autoscaling')
+elbv2_client = boto3.client('elbv2')
+
+def lambda_handler(event, context):
+    print("이벤트 수신:", json.dumps(event))
+
+    # 1. [안전장치] 사건 터진 곳이 우리 공장(ASG) 맞는지 확인! ⭐
+    # EventBridge가 보내준 데이터에서 'AutoScalingGroupName'을 꺼내봄.
+    event_asg_name = event['detail']['AutoScalingGroupName']
+    
+    if event_asg_name != TARGET_ASG_NAME:
+        print(f"무시함: {event_asg_name}은 내 담당이 아님. (난 {TARGET_ASG_NAME}만 처리해!)")
+        return {"status": "ignored", "reason": "Not target ASG"}
+
+    # --- (여기서부터는 아까랑 똑같음) ---
+    print(f"확인됨: {TARGET_ASG_NAME}에서 발생한 이벤트입니다. 작업 시작!")
+
+    # 2. 현재 인스턴스 개수 확인
+    response = asg_client.describe_auto_scaling_groups(AutoScalingGroupNames=[TARGET_ASG_NAME])
+    instances = response['AutoScalingGroups'][0]['Instances']
+    # 'InService'(정상 작동 중)인 놈들만 셈
+    running_count = len([i for i in instances if i['LifecycleState'] == 'InService'])
+    
+    print(f"현재 실행 중인 인스턴스: {running_count}개")
+
+    # 3. 가중치 결정
+    if running_count > 0:
+        weights = {'AWS': 50, 'Physical': 50} # 반반
+        mode = "Hybrid"
+    else:
+        weights = {'AWS': 0, 'Physical': 100} # 물리 몰빵
+        mode = "On-Prem Only"
+
+    # 4. 로드 밸런서 설정 변경
+    try:
+        elbv2_client.modify_listener(
+            ListenerArn=ALB_LISTENER_ARN,
+            DefaultActions=[{
+                'Type': 'forward',
+                'ForwardConfig': {
+                    'TargetGroups': [
+                        {'TargetGroupArn': TG_AWS_ARN, 'Weight': weights['AWS']},
+                        {'TargetGroupArn': TG_PHYSICAL_ARN, 'Weight': weights['Physical']}
+                    ]
+                }
+            }]
+        )
+        print(f"설정 변경 완료: {mode} 모드 (AWS {weights['AWS']} : Phy {weights['Physical']})")
+        return {"status": "success", "mode": mode}
+        
+    except Exception as e:
+        print(f"에러 발생: {str(e)}")
+        raise e
