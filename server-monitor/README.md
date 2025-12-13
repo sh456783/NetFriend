@@ -32,13 +32,7 @@ Suricata IDS 로그, CloudWatch 메트릭(EC2 + 물리 서버), EC2 제어 기�
 
 ### ● IP 차단 관리 (차단 목록 대시보드)
 - Suricata 탐지 이벤트 기반으로 **ipset 자동 차단** 수행  
-- **차단된 IP 리스트를 대시보드에서 조회** 가능  
-- 필요 시 **수동 차단 추가 / 차단 해제(언밴) / 만료 시간(TTL) 관리** 기능 제공  
-  *(프로젝트 구현 방식에 따라 제공 범위는 달라질 수 있음)*
-
----
-
-## 참고
+- **차단된 IP 리스공- **수동 차단 추가 / 차단 해제(언밴) / 만료 시간(TTL) 관리**차단된 IP 리스-## 참고
 - 본 대시보드는 **Nginx Reverse Proxy 환경 기준**으로 배포되었습니다.  
 - 로컬 개발 시 기본 포트는 React(3000), FastAPI(8000) 를 사용합니다.  
 - **물리 서버 CPU 지표는 CloudWatch Agent를 통해 AWS CloudWatch로 전송**되며,  
@@ -51,8 +45,7 @@ Suricata IDS 로그, CloudWatch 메트릭(EC2 + 물리 서버), EC2 제어 기�
 
 ```text
 server-monitor/
-├── README.md              # 웹 대시보드 모듈 설명
-├── main.py                # FastAPI 백엔드 (로그/메트릭/제어 API)
+├── README.md              # 웹 대시보드 모듈 설명드├── main.py                # FastAPI 백엔드 (로그/메트릭/제어 API)
 ├── frontend/              # React 기반 대시보드
 │   ├── public/
 │   │   └── index.html
