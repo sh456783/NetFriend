@@ -40,7 +40,7 @@
 ## 🗺️ 시스템 구성도
 
 ### 전체 아키텍처
-<img src="./image/Configuration_diagram.png" width="800"/>
+<img src="./ect/diagram/Configuration_diagram.png" width="800"/>
 
 ---
 
@@ -185,5 +185,5 @@ NetFriend/
 ├── hybrid_server/         # VPN, 하이브리드 서버, Auto Scaling 구성
 ├── internal_security/     # Fail2Ban 개선 IPS 보안 로직
 ├── server-monitor/        # FastAPI + React 웹 대시보드
-├── image/                 # 시스템 구성도 및 대시보드 캡처
+├── ect/                   # 시스템 구성도 및 대시보드 & 물리서버 시스템 이미지
 └── README.md              # 메인 프로젝트 설명
