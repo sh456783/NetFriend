@@ -1,6 +1,6 @@
 # 🔰 NetFriend  
 **Real-time web monitoring system using hybrid cloud**  
-하이브리드 클라우드를 이용한 실시간  웹 모니터링 시스템
+하이브리드 클라우드를 이용한 실시간 웹 모니터링 시스템
 
 [![last commit](https://img.shields.io/github/last-commit/sh456783/NetFriend)](https://github.com/sh456783/NetFriend/commits)
 ![repo size](https://img.shields.io/github/repo-size/sh456783/NetFriend)
@@ -13,26 +13,27 @@
 
 **NetFriend**는  
 온프레미스 물리 서버(On-Premise)와 AWS EC2 환경을 **VPN으로 연결한 하이브리드 구조**에서  
-침입 탐지(IDS) → 자동 대응(IPS) → 서버 모니터링 → 시각화를 **하나의 흐름으로 통합 구현한 보안 시스템**입니다.
+침입 탐지(IDS) → 자동 대응(IPS) → 서버 모니터링 → 시각화를  
+**하나의 흐름으로 통합 구현한 보안·모니터링 시스템**입니다.
 
-기존의 단일 IDS/IPS 또는 클라우드 단독 보안 구조의 한계를 보완하기 위해  
+보안 탐지와 대응이 각각 분리되어 있는 기존 구조의 한계를 보완하기 위해  
 다음과 같은 목표로 프로젝트를 설계·구현했습니다.
 
-- 하이브리드 환경에서도 일관된 보안 탐지 및 대응
-- 침입 탐지 이후 **자동 IP 차단까지 이어지는 실시간 대응**
-- 서버 상태 · 보안 이벤트 · 차단 현황을 **웹 대시보드에서 통합 관리**
-- Auto Scaling 환경에서도 보안 및 모니터링이 자동으로 확장되도록 설계
+• 하이브리드 환경에서도 일관된 보안 탐지 및 대응  
+• 침입 탐지 이후 자동 IP 차단까지 이어지는 실시간 대응  
+• 서버 상태 · 보안 이벤트 · 차단 현황을 웹 대시보드에서 통합 관리  
+• Auto Scaling 환경에서도 보안과 모니터링이 자동 확장되는 구조  
 
 ---
 
 ## 🎯 구현 목표
 
-- **Suricata 기반 실시간 침입 탐지 (IDS)**
-- **ipset 기반 고속 IP 차단 (IPS)**
-- **Fail2Ban 개선 방식의 로그인 공격 대응**
-- **온프레미스 + AWS EC2 통합 서버 모니터링**
-- **FastAPI + React 기반 웹 대시보드 구현**
-- **Auto Scaling 환경에서도 동일하게 동작하는 구조 설계**
+• Suricata 기반 실시간 침입 탐지 (IDS)  
+• ipset 기반 고속 IP 차단 (IPS)  
+• Fail2Ban 개선 방식의 로그인 공격 대응  
+• 온프레미스 + AWS EC2 통합 서버 모니터링  
+• FastAPI + React 기반 웹 대시보드 구현  
+• Auto Scaling 환경에서도 동일하게 동작하는 보안 구조  
 
 ---
 
@@ -40,6 +41,36 @@
 
 ### 전체 아키텍처
 <img src="./image/Configuration_diagram.png" width="800"/>
+
+NetFriend의 전체 흐름은  
+외부 트래픽 → Suricata IDS → FastAPI 처리 → IPS 차단 → 대시보드 시각화로 이어집니다.
+
+---
+
+### 하이브리드 서버 구성
+<img src="./image/Hybrid%20server%20configuration%20diagram.png" width="800"/>
+
+온프레미스 서버와 AWS VPC는  
+StrongSwan 기반 Site-to-Site VPN으로 연결되어  
+하나의 내부 네트워크처럼 동작하도록 구성되어 있습니다.
+
+---
+
+### 내부 보안 구조 (IDS / IPS)
+<img src="./image/Internal_security_diagram.png" width="800"/>
+
+Suricata 탐지 이벤트를 기준으로  
+위험도 높은 트래픽은 자동으로 IPS 정책에 따라 차단되며,  
+차단 정보는 DB 및 대시보드에서 관리됩니다.
+
+---
+
+### 웹 대시보드 구성
+<img src="./image/dashboard_configuration_diagram.png" width="65%">
+
+웹 대시보드는 단순 예시가 아닌  
+**실제 구현 완료된 구조**로,  
+보안·모니터링·제어 기능을 하나의 화면에서 제공합니다.
 
 ---
 
