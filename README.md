@@ -50,8 +50,6 @@
 ### 웹 대시보드 구성
 <img src="./image/dashboard_configuration_diagram.png" width="65%">
 
-> 📌 위 구성도에 포함된 모든 요소는 **설계 예시가 아닌 실제 구현 완료된 구조**입니다.
-
 ---
 
 ## ⚙️ 주요 구현 내용
