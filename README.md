@@ -26,42 +26,6 @@
 
 ---
 
-
-## 🛠️ Tech Stack
-
-### 🔐 Backend & Security
-![Python](https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=python&logoColor=white)
-![Suricata](https://img.shields.io/badge/Suricata-EE3124?style=for-the-badge)
-![FastAPI](https://img.shields.io/badge/FastAPI-009688?style=for-the-badge&logo=fastapi&logoColor=white)
-![SQLite](https://img.shields.io/badge/SQLite-07405E?style=for-the-badge&logo=sqlite&logoColor=white)
-![ipset](https://img.shields.io/badge/ipset-000000?style=for-the-badge)
-
----
-
-### 🌐 Web & Dashboard
-![React](https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB)
-![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black)
-![Nginx](https://img.shields.io/badge/Nginx-009639?style=for-the-badge&logo=nginx&logoColor=white)
-
----
-
-### ☁️ Cloud & Infrastructure
-![AWS](https://img.shields.io/badge/AWS-232F3E?style=for-the-badge&logo=amazonaws&logoColor=white)
-![EC2](https://img.shields.io/badge/EC2-FF9900?style=for-the-badge&logo=amazon-ec2&logoColor=white)
-![CloudWatch](https://img.shields.io/badge/CloudWatch-FF4F8B?style=for-the-badge&logo=amazoncloudwatch&logoColor=white)
-![AutoScaling](https://img.shields.io/badge/Auto%20Scaling-FF9900?style=for-the-badge)
-
----
-
-### 🔗 Hybrid Network
-![StrongSwan](https://img.shields.io/badge/StrongSwan-E60012?style=for-the-badge)
-
----
-
-### 🧰 DevOps
-![Docker](https://img.shields.io/badge/Docker-2496ED?style=for-the-badge&logo=docker&logoColor=white)
-
-
 ## 🎯 구현 목표
 
 • Suricata 기반 실시간 침입 탐지 (IDS)  
@@ -72,6 +36,41 @@
 • Auto Scaling 환경에서도 동일하게 동작하는 보안 구조  
 
 ---
+
+## 🛠️ Tech Stack
+
+### 🔐 Backend & Security
+![Python](https://img.shields.io/badge/Python-3776AB?style=flat-square&logo=python&logoColor=white)
+![Suricata](https://img.shields.io/badge/Suricata-EE3124?style=flat-square)
+![FastAPI](https://img.shields.io/badge/FastAPI-009688?style=flat-square&logo=fastapi&logoColor=white)
+![SQLite](https://img.shields.io/badge/SQLite-07405E?style=flat-square&logo=sqlite&logoColor=white)
+![ipset](https://img.shields.io/badge/ipset-000000?style=flat-square)
+
+---
+
+### 🌐 Web & Dashboard
+![React](https://img.shields.io/badge/React-20232A?style=flat-square&logo=react&logoColor=61DAFB)
+![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?style=flat-square&logo=javascript&logoColor=black)
+![Nginx](https://img.shields.io/badge/Nginx-009639?style=flat-square&logo=nginx&logoColor=white)
+
+---
+
+### ☁️ Cloud & Infrastructure
+![AWS](https://img.shields.io/badge/AWS-232F3E?style=flat-square&logo=amazonaws&logoColor=white)
+![EC2](https://img.shields.io/badge/EC2-FF9900?style=flat-square&logo=amazon-ec2&logoColor=white)
+![CloudWatch](https://img.shields.io/badge/CloudWatch-FF4F8B?style=flat-square&logo=amazoncloudwatch&logoColor=white)
+![AutoScaling](https://img.shields.io/badge/Auto%20Scaling-FF9900?style=flat-square)
+
+---
+
+### 🔗 Hybrid Network
+![StrongSwan](https://img.shields.io/badge/StrongSwan-E60012?style=flat-square)
+
+---
+
+### 🧰 DevOps
+![Docker](https://img.shields.io/badge/Docker-2496ED?style=flat-square&logo=docker&logoColor=white)
+
 
 ## 🗺️ 시스템 구성도
 
