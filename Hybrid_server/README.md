@@ -64,7 +64,7 @@ VPN 기반 네트워크 연동부터 물리 서버 서비스 운영, 클라우�
 ---
 
 ## 🖥️ On-Premise Physical Server System
-<img src="../screenshots/physical_server/physical_server_system.png" width="800"/>
+<img src="../screenshots/physical_server/physical_server_system.png" width="600"/>
 
 - 온프레미스 환경에서 웹 서비스 운영  
 - 내부 사용자용 게시판 및 채팅 시스템 실행  
