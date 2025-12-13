@@ -185,5 +185,5 @@ NetFriend/
 ├── hybrid_server/         # VPN, 하이브리드 서버, Auto Scaling 구성
 ├── internal_security/     # Fail2Ban 개선 IPS 보안 로직
 ├── server-monitor/        # FastAPI + React 웹 대시보드
-├── ect/                   # 시스템 구성도 및 대시보드 & 물리서버 시스템 이미지
+├── Screenshots/           # 시스템 구성도 및 대시보드 & 물리서버 시스템 이미지
 └── README.md              # 메인 프로젝트 설명
