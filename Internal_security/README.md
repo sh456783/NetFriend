@@ -11,7 +11,7 @@ Fail2Ban의 동작 원리를 참고하되 실제 차단 로직은 Python으로 �
 
 ## 🔐 내부 보안 처리 알고리즘 (Internal Security Algorithm)
 
-<img src="../screenshots/architecture/Internal_security_diagram.png" width="65%"/>
+<img src="../screenshots/architecture/Internal_security_diagram.png" width="70%"/>
 
 내부 보안 알고리즘은  
 **침입 탐지(IDS) → 판단 → 차단(IPS) → 관리**의 흐름으로 동작합니다.
