@@ -117,12 +117,15 @@
 - 자동/수동 IP 차단 리스트 관리
 - 로그인 기반 접근 제어
 
-👥 팀원 역할
-이름	역할
-박혜소	EC2 보안 서버 구축, Suricata IDS 구성, IPS(ipset) 구현, FastAPI 백엔드, 하이브리드 연동
-팀원 A	React 웹 대시보드 UI 구현
-팀원 B	Auto Scaling / Load Balancer 구성
-팀원 C	문서 정리 및 테스트 시나리오 작성
+## 👥 팀원 역할
+
+| 이름 | 역할 |
+|------|------|
+| **박혜소** | - AWS EC2 보안 서버 구축 및 운영 환경 구성<br>- Suricata IDS 설치 및 커스텀 룰 기반 침입 탐지 구현<br>- ipset 기반 IPS 자동 차단 로직 설계 및 구현<br>- Fail2Ban 개선 방식의 로그인 공격 대응 로직 구현<br>- FastAPI 백엔드 개발 (IDS 로그 처리, IP 차단 관리, EC2 제어 API)<br>- 온프레미스–AWS 하이브리드 환경 연동(VPN, CloudWatch Agent)<br>- 전체 시스템 아키텍처 설계 및 보안 흐름 통합 |
+| **팀원 A** | - React 기반 웹 대시보드 UI 구현<br>- 서버 상태, IDS 알림, IP 차단 목록 시각화<br>- 사용자 인터페이스 및 화면 구성 설계 |
+| **팀원 B** | - AWS Auto Scaling Group 및 Load Balancer 구성<br>- 트래픽 분산 및 서버 자동 확장 환경 구축<br>- 확장 인스턴스의 대시보드/보안 연동 테스트 |
+| **팀원 C** | - 프로젝트 문서(PDF/PPT) 정리<br>- 테스트 시나리오 및 실험 결과 정리<br>- 발표 자료 및 최종 보고서 작성 지원 |
+
 
 📄 문서 & 자료
 - IDS 설치 및 테스트 문서
