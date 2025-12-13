@@ -8,11 +8,16 @@
 
 ---
 
-### 🔹 Fail2ban 차단 속도 비교
+### 🔹 Fail2ban 차단 속도 비교 시연
 
-- 기존 Fail2ban: 로그 기반 탐지로 차단까지 지연 발생  
-- 커스텀 Fail2ban: Suricata 이벤트 기반 **즉시 ipset 차단**
+- 기존 Fail2ban  
+  - 로그 기반 탐지  
+  - 차단까지 지연 발생  
 
-▶ **[영상 바로 보기](./Attack Detection Demo.mp4)**
+- 커스텀 Fail2ban  
+  - Suricata 이벤트 기반 탐지  
+  - **ipset을 활용한 즉시 IP 차단**
+
+▶ **[영상 바로 보기](./Attack%20Detection%20Demo.mp4)**
 
 ---
