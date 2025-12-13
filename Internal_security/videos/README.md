@@ -13,6 +13,6 @@
 - 기존 Fail2ban: 로그 기반 탐지로 차단까지 지연 발생  
 - 커스텀 Fail2ban: Suricata 이벤트 기반 **즉시 ipset 차단**
 
-▶ **[영상 바로 보기](./attack_demo.mp4)**
+▶ **[영상 바로 보기](./Attack Detection Demo.mp4)**
 
 ---
