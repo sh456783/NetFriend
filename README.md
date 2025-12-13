@@ -126,14 +126,55 @@
 | **양승현** | 하이브리드 아키텍처 설계, VPN(StrongSwan) 구축 |
 
 
-📄 문서 & 자료
-- IDS 설치 및 테스트 문서
-- VPN 구성 문서
-- CloudWatch Agent 설정 문서
-- Auto Scaling 환경 구성 문서
-- 공격 탐지 및 차단 시연 영상
+📄 문서 & 자료 (Documentation)
 
-👉 상세 문서는 각 폴더 내 README.md 및 PDF 문서 참고
+NetFriend 프로젝트의 설계, 구현, 테스트 과정은 각 기능별 폴더에 문서로 정리되어 있습니다.
+아래 항목을 통해 어떤 기능을 어떻게 구현했는지를 단계별로 확인할 수 있습니다.
+
+🔐 IDS 설치 및 테스트 문서
+
+EC2 환경에서의 보안 서버 구축 과정
+
+Suricata IDS 설치 및 기본 설정
+
+테스트용 룰을 활용한 침입 탐지 동작 검증
+
+공격 트래픽 발생 시 탐지 이벤트 생성 흐름 정리
+
+🌐 VPN 구성 문서
+
+온프레미스 서버와 AWS 간 하이브리드 환경 설계
+
+StrongSwan 기반 Site-to-Site VPN 구성 과정
+
+암호화 터널을 통한 내부 네트워크 통신 구조 설명
+
+📊 CloudWatch Agent 설정 문서
+
+EC2 및 온프레미스 서버에 CloudWatch Agent 설치
+
+CPU 메트릭 수집 및 AWS CloudWatch 전송 과정
+
+물리 서버와 EC2 메트릭을 통합 모니터링하는 구조 설명
+
+⚖️ Auto Scaling 환경 구성 문서
+
+Launch Template 기반 인스턴스 복제 구조
+
+CPU 사용률 기반 Auto Scaling 정책 설정
+
+Load Balancer 연동을 통한 트래픽 분산 흐름 정리
+
+🚨 공격 탐지 및 차단 시연 자료
+
+Suricata 탐지 → 로그 생성 → 대응 처리 전체 흐름 시연
+
+기존 Fail2Ban과 커스텀 차단 로직의 차단 속도 비교 영상
+
+ipset 기반 IPS 자동 차단 동작 확인
+
+👉 각 기능에 대한 상세 내용은 해당 폴더 내 README.md 및 PDF 문서를 참고하면 됩니다.
+(설정 과정, 구조 설명, 테스트 결과를 단계별로 정리해두었습니다.)
 
 ---
 
