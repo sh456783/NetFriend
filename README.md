@@ -40,7 +40,7 @@
 ## 🗺️ 시스템 구성도
 
 ### 전체 아키텍처
-<img src="./ect/diagram/Configuration_diagram.png" width="800"/>
+<img src="./screenshots/architecture/Configuration_diagram.png" width="800"/>
 
 ---
 
