@@ -15,7 +15,7 @@ Suricata IDS 로그, CloudWatch 메트릭(EC2 + 물리 서버), EC2 제어 기�
 
 ## 🧩 웹 대시보드 처리 알고리즘
 
-<img src="../screenshots/architecture/dashboard_configuration_diagram.png" width="60%"/>
+<img src="../screenshots/architecture/dashboard_configuration_diagram.png" width="50%"/>
 
 웹 대시보드는 다음과 같은 흐름으로 동작합니다.
 
@@ -29,7 +29,7 @@ Suricata IDS 로그, CloudWatch 메트릭(EC2 + 물리 서버), EC2 제어 기�
 
 ## 🧑‍💻 로그인 페이지
 
-<img src="../screenshots/dashboard/login_page.png" width="660"/>
+<img src="../screenshots/dashboard/login_page.png" width="600"/>
 
 - 사용자 인증을 통한 대시보드 접근 제어  
 - 비인가 사용자 접근 차단  
