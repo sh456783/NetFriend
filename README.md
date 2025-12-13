@@ -2,17 +2,11 @@
 **Real-time web monitoring system using hybrid cloud**  
 하이브리드 클라우드를 이용한 실시간  웹 모니터링 시스템
 
-### 전체 아키텍처
-<img src="./image/Configuration_diagram.png" width="800"/>
+[![last commit](https://img.shields.io/github/last-commit/sh456783/NetFriend)](https://github.com/sh456783/NetFriend/commits)
+![repo size](https://img.shields.io/github/repo-size/sh456783/NetFriend)
+![contributors](https://img.shields.io/github/contributors/sh456783/NetFriend)
+[![license MIT](https://img.shields.io/github/license/sh456783/NetFriend)](LICENSE)
 
-### 하이브리드 서버 구성
-<img src="./image/Hybrid%20server%20configuration%20diagram.png" width="800"/>
-
-### 내부 보안 구조 (IDS / IPS)
-<img src="./image/Internal_security_diagram.png" width="800"/>
-
-### 웹 대시보드 구성
-<img src="./image/dashboard_configuration_diagram.png" width="800"/>
 ---
 
 ## 📌 프로젝트 개요
@@ -45,16 +39,16 @@
 ## 🗺️ 시스템 구성도
 
 ### 전체 아키텍처
-![NetFriend Architecture](./image/Configuration_diagram.png)
+<img src="./image/Configuration_diagram.png" width="800"/>
 
 ### 하이브리드 서버 구성
-![Hybrid Server](./image/Hybrid%20server%20configuration%20diagram.png)
+<img src="./image/Hybrid%20server%20configuration%20diagram.png" width="800"/>
 
 ### 내부 보안 구조 (IDS / IPS)
-![Internal Security](./image/Internal_security_diagram.png)
+<img src="./image/Internal_security_diagram.png" width="800"/>
 
 ### 웹 대시보드 구성
-![Dashboard Configuration](./image/dashboard_configuration_diagram.png)
+<img src="./image/dashboard_configuration_diagram.png" width="800"/>
 
 > 📌 위 구성도에 포함된 모든 요소는 **설계 예시가 아닌 실제 구현 완료된 구조**입니다.
 
