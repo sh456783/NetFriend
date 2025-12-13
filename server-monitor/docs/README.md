@@ -1,5 +1,4 @@
-# server-monitor 문서 (Docs)
-
+# (Docs) server-monitor
 이 디렉터리는 **NetFriend 프로젝트의 웹 대시보드(server-monitor)** 모듈을 구현하면서  
 진행한 **설계, 구현, 연동, 배포 과정**을 정리한 문서 모음입니다.
 
