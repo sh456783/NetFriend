@@ -42,10 +42,10 @@ Suricata IDS 로그, CloudWatch 메트릭(EC2 + 물리 서버), EC2 제어 기�
 <table>
   <tr>
     <td align="center">
-      <img src="../screenshots/dashboard/Dashboard_page.png" width="400"/>
+      <img src="../screenshots/dashboard/Dashboard_page.png" width="500"/>
     </td>
     <td align="center">
-      <img src="../screenshots/dashboard/dashboard_page_2.png" width="400"/>
+      <img src="../screenshots/dashboard/dashboard_page_2.png" width="500"/>
     </td>
   </tr>
 </table>
