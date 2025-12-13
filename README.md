@@ -26,16 +26,6 @@
 
 ---
 
-## 🎯 구현 목표
-
-• Suricata 기반 실시간 침입 탐지 (IDS)  
-• ipset 기반 고속 IP 차단 (IPS)  
-• Fail2Ban 개선 방식의 로그인 공격 대응  
-• 온프레미스 + AWS EC2 통합 서버 모니터링  
-• FastAPI + React 기반 웹 대시보드 구현  
-• Auto Scaling 환경에서도 동일하게 동작하는 보안 구조  
-
----
 
 ## 🛠️ Tech Stack
 
@@ -72,6 +62,16 @@
 ![Docker](https://img.shields.io/badge/Docker-2496ED?style=for-the-badge&logo=docker&logoColor=white)
 
 
+## 🎯 구현 목표
+
+• Suricata 기반 실시간 침입 탐지 (IDS)  
+• ipset 기반 고속 IP 차단 (IPS)  
+• Fail2Ban 개선 방식의 로그인 공격 대응  
+• 온프레미스 + AWS EC2 통합 서버 모니터링  
+• FastAPI + React 기반 웹 대시보드 구현  
+• Auto Scaling 환경에서도 동일하게 동작하는 보안 구조  
+
+---
 
 ## 🗺️ 시스템 구성도
 
@@ -79,7 +79,6 @@
 <img src="./screenshots/architecture/Configuration_diagram.png" width="800"/>
 
 ---
-
 
 ## ⚙️ 주요 구현 내용
 
