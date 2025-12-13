@@ -39,7 +39,16 @@ Suricata IDS 로그, CloudWatch 메트릭(EC2 + 물리 서버), EC2 제어 기�
 
 ## 🖥️ 웹 대시보드 메인 화면
 
-<img src="../screenshots/dashboard/dashboard_page_2.png" width="660"/>
+<table>
+  <tr>
+    <td align="center">
+      <img src="../screenshots/dashboard/Dashboard_page.png" width="400"/>
+    </td>
+    <td align="center">
+      <img src="../screenshots/dashboard/dashboard_page_2.png" width="400"/>
+    </td>
+  </tr>
+</table>
 
 - EC2 및 Auto Scaling 인스턴스 상태 조회  
 - CloudWatch 기반 CPU 메트릭 시각화  
