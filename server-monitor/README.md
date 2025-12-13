@@ -1,18 +1,53 @@
 # server-monitor [Web Dashboard]  
 FastAPI × React 기반 서버 모니터링 대시보드
 
-이 폴더는 **EC2 보안 서버**, **Auto Scaling으로 생성된 복제 인스턴스**,  
-그리고 **온프레미스 물리 서버(VM)** 에서 수집한 데이터를  
-웹 UI로 통합 확인할 수 있도록 구성된 서버 모니터링 대시보드입니다.
+이 폴더는 **EC2 보안 서버**, **Auto Scaling으로 생성된 복제 인스턴스** 그리고 **온프레미스 물리 서버(VM)** 에서 수집한 데이터를  웹 UI로 통합 
+확인할 수 있도록 구성된 서버 모니터링 대시보드입니다.
 
-Suricata IDS 로그, CloudWatch 메트릭(EC2 + 물리 서버),  
-EC2 제어 기능과 함께 **IP 차단 목록(자동/수동)을 한 화면에서 관리**할 수 있습니다.
+Suricata IDS 로그, CloudWatch 메트릭(EC2 + 물리 서버), EC2 제어 기능과 함께 **IP 차단 목록(자동/수동)을 한 화면에서 관리**할 수 있습니다.
 
 ---
+
 ## 📄 문서 안내
-- 웹 대시보드 **구현 과정, IP 차단 리스트 설계, 동작 흐름**에 대한  
-  상세 설명 문서는 `docs/` 디렉터리에 정리되어 있습니다.
-  
+- 웹 대시보드 **구현 과정, IP 차단 리스트 설계, 동작 흐름**에 대한 상세 설명 문서는 `docs/` 디렉터리에 정리되어 있습니다.
+
+---
+
+## 🧩 웹 대시보드 처리 알고리즘
+
+<img src="../screenshots/architecture/dashboard_algorithm.png" width="800"/>
+
+웹 대시보드는 다음과 같은 흐름으로 동작합니다.
+
+- Suricata IDS 로그(`eve.json`)를 FastAPI 백엔드에서 주기적으로 수집  
+- 탐지 이벤트를 위험도 기준으로 가공 및 분류  
+- EC2 / Auto Scaling 인스턴스 상태 및 CloudWatch 메트릭 수집  
+- 수집된 데이터는 REST API를 통해 React 대시보드로 전달  
+- IP 차단 요청은 FastAPI → ipset → 시스템 방화벽으로 즉시 반영  
+
+---
+
+## 🧑‍💻 로그인 페이지
+
+<img src="../screenshots/dashboard/login_page.png" width="600"/>
+
+- 사용자 인증을 통한 대시보드 접근 제어  
+- 비인가 사용자 접근 차단  
+- 운영자 전용 모니터링 화면 보호 목적  
+
+---
+
+## 🖥️ 웹 대시보드 메인 화면
+
+<img src="../screenshots/dashboard/dashboard_main.png" width="800"/>
+
+- EC2 및 Auto Scaling 인스턴스 상태 조회  
+- CloudWatch 기반 CPU 메트릭 시각화  
+- Suricata IDS 탐지 이벤트 실시간 표시  
+- IP 차단 목록 조회 및 관리  
+- 서버 제어(Start / Stop) 기능 제공  
+
+---
 
 ## 주요 기능
 
@@ -39,6 +74,7 @@ EC2 제어 기능과 함께 **IP 차단 목록(자동/수동)을 한 화면에�
 - Suricata 탐지 이벤트 기반 **ipset 자동 차단** 기능 구현  
 - 차단된 IP 리스트 조회  
 - **수동 차단 추가 / 차단 해제(언밴) / 만료 시간(TTL) 기반 관리** 지원
+
 ---
 
 ## 참고
