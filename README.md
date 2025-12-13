@@ -42,29 +42,6 @@
 ### 전체 아키텍처
 <img src="./image/Configuration_diagram.png" width="800"/>
 
-NetFriend의 전체 흐름은 외부 트래픽 → Suricata IDS → FastAPI 처리 → IPS 차단 → 대시보드 시각화로 이어집니다.
-
----
-
-### 하이브리드 서버 구성
-<img src="./image/Hybrid%20server%20configuration%20diagram.png" width="800"/>
-
-온프레미스 서버와 AWS VPC는 StrongSwan 기반 Site-to-Site VPN으로 연결되어 하나의 내부 네트워크처럼 동작하도록 구성되어 있습니다.
-
----
-
-### 내부 보안 구조 (IDS / IPS)
-<img src="./image/Internal_security_diagram.png" width="800"/>
-
-Suricata 탐지 이벤트를 기준으로 위험도 높은 트래픽은 자동으로 IPS 정책에 따라 차단되며 차단 정보는 DB 및 대시보드에서 관리됩니다.
-
----
-
-### 웹 대시보드 구성
-<img src="./image/dashboard_configuration_diagram.png" width="65%">
-
-FastAPI를 이용해 AWS 기능,Suricata의 로그 기록들을 불러오고 Ngnix 프록시로 요청을 효율적으로 관리합니다.
-
 ---
 
 ## ⚙️ 주요 구현 내용
