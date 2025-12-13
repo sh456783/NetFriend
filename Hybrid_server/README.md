@@ -83,6 +83,4 @@ VPN 기반 네트워크 연동부터 물리 서버 서비스 운영, 클라우�
 ---
 
 ## 참고
-Auto Scaling 상태에 따라 트래픽을 자동으로 제어하는  
-Lambda 함수 코드는  
-`Hybrid_server/lambda` 디렉터리에 포함되어 있습니다.
+Auto Scaling 상태에 따라 트래픽을 자동으로 제어하는  Lambda 함수 코드는  `Hybrid_server/lambda` 디렉터리에 포함되어 있습니다.
