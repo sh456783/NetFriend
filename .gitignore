@@ -1,8 +1,12 @@
-"venv/" 
-"__pycache__/" 
+# Windows / VS
+desktop.ini
+.vs/
+**/.vs/
+
+# Node / Python
+node_modules/
+**/node_modules/
 venv/
-**/venv/
+.venv/
 __pycache__/
-**/__pycache__/
 *.pyc
-.DS_Store
