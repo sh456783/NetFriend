@@ -15,7 +15,7 @@ Suricata IDS 로그, CloudWatch 메트릭(EC2 + 물리 서버), EC2 제어 기�
 
 ## 🧩 웹 대시보드 처리 알고리즘
 
-<img src="../screenshots/architecture/dashboard_algorithm.png" width="800"/>
+<img src="../screenshots/architecture/dashboard_configuration_diagram.png" width="65%"/>
 
 웹 대시보드는 다음과 같은 흐름으로 동작합니다.
 
@@ -39,7 +39,7 @@ Suricata IDS 로그, CloudWatch 메트릭(EC2 + 물리 서버), EC2 제어 기�
 
 ## 🖥️ 웹 대시보드 메인 화면
 
-<img src="../screenshots/dashboard/dashboard_main.png" width="800"/>
+<img src="../screenshots/dashboard/dashboard_page_2" width="800"/>
 
 - EC2 및 Auto Scaling 인스턴스 상태 조회  
 - CloudWatch 기반 CPU 메트릭 시각화  
