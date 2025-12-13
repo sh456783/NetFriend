@@ -41,15 +41,6 @@
 ### 전체 아키텍처
 <img src="./image/Configuration_diagram.png" width="800"/>
 
-### 하이브리드 서버 구성
-<img src="./image/Hybrid%20server%20configuration%20diagram.png" width="800"/>
-
-### 내부 보안 구조 (IDS / IPS)
-<img src="./image/Internal_security_diagram.png" width="800"/>
-
-### 웹 대시보드 구성
-<img src="./image/dashboard_configuration_diagram.png" width="65%">
-
 ---
 
 ## ⚙️ 주요 구현 내용
