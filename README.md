@@ -112,7 +112,7 @@
 | 이름 | 담당 역할 |
 |------|-----------|
 | **엄세현** | Auto Scaling, Load Balancer 구성, CloudWatch 연동 |
-| **박혜소** | EC2 보안 서버 구축, Suricata IDS 설치, 웹 대시보드 배포(Nginx), IDS·AWS 연동, GitHub 문서 정리 |
+| **박혜소** | EC2 보안 서버 구축, Suricata IDS 설치, 웹 대시보드 배포(Nginx), IDS·AWS 연동 |
 | **이주영** | React / FastAPI 기반 웹 대시보드 구현, 로그·메트릭 시각화 |
 | **안준상** | IPS 자동 차단 로직, IP 차단 대시보드 구현, Fail2Ban 개선 |
 | **양승현** | 하이브리드 아키텍처 설계, VPN(StrongSwan) 구축 |
